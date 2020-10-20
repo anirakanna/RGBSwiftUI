@@ -12,7 +12,8 @@ struct ColorSliderStack: View {
     @State var textFieldValue: String
     @State var showAlert = false
     
-    private var stringSliderValue: String {  brintToString()
+    private var stringSliderValue: String {
+        getString(value: sliderValue)
     }
     let color: Color
     
@@ -43,14 +44,14 @@ struct ColorSliderStack: View {
         guard let number = Double(textFieldValue) else { showAlert = true; return }
         if number > 255 {
             showAlert = true
-            textFieldValue = brintToString()
+            textFieldValue = getString(value: sliderValue)
             return
         }
         sliderValue = number
     }
     
-    private func brintToString() -> String {
-        String(Int(sliderValue))
+    private func getString(value: Double) -> String {
+        String(Int(value))
     }
 }
 
